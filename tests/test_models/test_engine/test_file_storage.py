@@ -4,6 +4,7 @@ Contains the TestFileStorageDocs classes
 """
 
 from datetime import datetime
+import dbm
 import inspect
 import models
 from models.engine import file_storage
@@ -124,7 +125,7 @@ class TestFileStorage(unittest.TestCase):
         new_user.save()
         self.assertIs(storage.get("User", new_user.id), new_user)
 
-    @unittest.skipIf(os.getenv(HBNB_TYPE_STORAGE) == db,
+    @unittest.skipIf(os.getenv(HBNB_TYPE_STORAGE) == dbm,
                      "not testing file storage")
     def test_count(self):
         storage = FileStorage()

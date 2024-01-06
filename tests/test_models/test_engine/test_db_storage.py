@@ -4,6 +4,7 @@ Contains the TestDBStorageDocs and TestDBStorage classes
 """
 
 from datetime import datetime
+import dbm
 import inspect
 import models
 from models.engine import db_storage
@@ -78,7 +79,7 @@ class TestFileStorage(unittest.TestCase):
     def test_all_no_class(self):
         """Test that all returns all rows when no class is passed"""
 
-    @unittest.skipIf(models.storage_t != db, "not testing db storage")
+    @unittest.skipIf(models.storage_t != dbm, "not testing db storage")
     def test_new(self):
         """test that new adds an object to the database"""
 
