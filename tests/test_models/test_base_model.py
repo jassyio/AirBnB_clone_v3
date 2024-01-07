@@ -95,6 +95,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(inst2.created_at, inst2.updated_at)
         self.assertNotEqual(inst1.created_at, inst2.created_at)
         self.assertNotEqual(inst1.updated_at, inst2.updated_at)
+        self.assertTrue(inst1.created_at <= inst2.created_at)
 
     def test_uuid(self):
         """Test that id is a valid uuid"""

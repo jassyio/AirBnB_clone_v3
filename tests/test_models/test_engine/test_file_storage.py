@@ -114,8 +114,7 @@ class TestFileStorage(unittest.TestCase):
             js = f.read()
         self.assertEqual(json.loads(string), json.loads(js))
 
-    @unittest.skipIf(os.getenv(HBNB_TYPE_STORAGE) == 'db',
-                     "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_get(self):
         """Test that the get method properly retrievs objects"""
         storage = FileStorage()
@@ -125,8 +124,7 @@ class TestFileStorage(unittest.TestCase):
         new_user.save()
         self.assertIs(storage.get("User", new_user.id), new_user)
 
-    @unittest.skipIf(os.getenv(HBNB_TYPE_STORAGE) == dbm,
-                     "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_count(self):
         storage = FileStorage()
         initial_length = len(storage.all())
